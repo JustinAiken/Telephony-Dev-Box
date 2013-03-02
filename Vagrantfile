@@ -124,13 +124,14 @@ Vagrant::Config.run do |config|
 
       chef.json = {
         freeswitch: {
+          git_uri: 'git://github.com/grasshoppergroup/FreeSWITCH-rayo.git',
           git_branch: 'master',
           tls_only: false,
           local_ip: public_ip,
           dialplan: {
-            head_fragments: '<extension name="Adhearsion">
-  <condition field="destination_number" expression=".*$">
-    <action application="park"/>
+            head_fragments: '<extension name="adhearsion">
+  <condition>
+    <action application="rayo" data=""/>
   </condition>
 </extension>'
           }
